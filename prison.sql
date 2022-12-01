@@ -102,6 +102,7 @@ ALTER TABLE `jobs`
 --
 -- Indexes for table `roles`
 --
+--Guard vs Warden vs Prisioner
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`roleID`);
 
