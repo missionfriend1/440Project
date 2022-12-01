@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2022 at 06:19 PM
+-- Generation Time: Dec 01, 2022 at 06:22 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -20,6 +20,119 @@ SET time_zone = "+00:00";
 --
 -- Database: `prision`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cell`
+--
+
+CREATE TABLE `cell` (
+  `cellID` int(11) NOT NULL,
+  `cellBlock` varchar(1) NOT NULL,
+  `maxOccupancy` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cell`
+--
+
+INSERT INTO `cell` (`cellID`, `cellBlock`, `maxOccupancy`) VALUES
+(1, 'A', 2),
+(2, 'A', 2),
+(3, 'B', 2),
+(4, 'B', 2),
+(5, 'C', 2),
+(6, 'C', 2),
+(7, 'D', 2),
+(8, 'D', 2),
+(9, 'D', 2),
+(10, 'D', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prisoner_jobs`
+--
+
+CREATE TABLE `prisoner_jobs` (
+  `jobID` int(11) NOT NULL,
+  `job` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `prisoner_jobs`
+--
+
+INSERT INTO `prisoner_jobs` (`jobID`, `job`) VALUES
+(1, 'Lead Cook'),
+(2, 'Janitor'),
+(3, 'History Teacher'),
+(4, 'Carpenter'),
+(5, 'Laundry Worker'),
+(6, 'English Teacher'),
+(7, 'Math Teacher'),
+(8, 'Science Teacher'),
+(9, 'Cook Hand'),
+(10, 'Librarian');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `roleID` int(11) NOT NULL,
+  `role` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`roleID`, `role`) VALUES
+(1, 'Warden'),
+(2, 'Cheif Guard'),
+(3, 'Guard'),
+(4, 'Head Doctor'),
+(5, 'Doctor'),
+(6, 'Electrician'),
+(7, 'Database Programer'),
+(8, 'Webmaster'),
+(9, 'Public Relations'),
+(10, 'Prisioner');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schedule`
+--
+
+CREATE TABLE `schedule` (
+  `timeID` int(11) NOT NULL,
+  `cellBlock` char(1) DEFAULT NULL,
+  `time` time(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `schedule`
+--
+
+INSERT INTO `schedule` (`timeID`, `cellBlock`, `time`) VALUES
+(1, NULL, '07:00:00.00'),
+(2, NULL, '08:00:00.46'),
+(3, NULL, '09:00:00.77'),
+(4, NULL, '10:00:00.76'),
+(5, NULL, '11:00:00.71'),
+(6, NULL, '12:00:00.34'),
+(7, NULL, '13:00:00.06'),
+(8, NULL, '14:00:00.43'),
+(9, NULL, '15:00:00.70'),
+(10, NULL, '16:00:00.56'),
+(11, NULL, '17:00:00.05'),
+(12, NULL, '18:00:00.26'),
+(13, NULL, '19:00:00.00');
 
 -- --------------------------------------------------------
 
@@ -75,6 +188,30 @@ INSERT INTO `users` (`userID`, `firstName`, `lastName`, `sex`, `jobID`, `roleID`
 --
 
 --
+-- Indexes for table `cell`
+--
+ALTER TABLE `cell`
+  ADD PRIMARY KEY (`cellID`);
+
+--
+-- Indexes for table `prisoner_jobs`
+--
+ALTER TABLE `prisoner_jobs`
+  ADD PRIMARY KEY (`jobID`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`roleID`);
+
+--
+-- Indexes for table `schedule`
+--
+ALTER TABLE `schedule`
+  ADD PRIMARY KEY (`timeID`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -83,6 +220,30 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `cell`
+--
+ALTER TABLE `cell`
+  MODIFY `cellID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `prisoner_jobs`
+--
+ALTER TABLE `prisoner_jobs`
+  MODIFY `jobID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `roleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `schedule`
+--
+ALTER TABLE `schedule`
+  MODIFY `timeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
